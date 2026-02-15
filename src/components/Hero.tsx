@@ -77,39 +77,51 @@ export const Hero: React.FC<HeroProps> = ({ onRegister }) => {
             </div>
           </div>
 
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6 tracking-tight">
+              Stop Financial Identity Theft <br />
+              <span className="text-blue-600">Before It Happens</span>
+            </h1>
+            <p className="text-xl text-slate-600 mb-4 max-w-3xl mx-auto">
+              The Voluntary Financial Exclusion Registry (VFER) allows Canadians to proactively block credit applications and high-risk transactions in their name.
+            </p>
+            <p className="text-sm text-slate-500 mb-10 max-w-2xl mx-auto border-l-4 border-blue-200 pl-4 py-1 italic">
+              "Canadians lost more than $638 million in reported fraud cases in 2024, although only 5-10% of cases are thought to be reported."
+              <span className="block not-italic font-semibold mt-1">— Angus Reid Institute, 2026 (Source: RAG Knowledge Blob)</span>
+            </p>     </div>
           <div className="grid grid-cols-1 gap-4">
-             {/* Synthetic Identity Card */}
-             <div className="flex items-center p-4 bg-indigo-50 rounded-lg shadow-sm border border-indigo-100 transition-all hover:shadow-md">
-                <Bot className="w-8 h-8 text-indigo-500 mr-4 flex-shrink-0" />
-                <div>
-                   <p className="font-semibold text-slate-900">Blocks Synthetic Identities</p>
-                   <p className="text-xs text-slate-500">
-                      Synthetic ID fraud surged <strong>26%</strong> in 2025. Physical verification stops AI-generated profiles cold.
-                   </p>
-                </div>
-             </div>
+            {/* Synthetic Identity Card */}
+            <div className="flex items-center p-4 bg-indigo-50 rounded-lg shadow-sm border border-indigo-100 transition-all hover:shadow-md">
+              <Bot className="w-8 h-8 text-indigo-500 mr-4 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-900">Blocks Synthetic Identities</p>
+                <p className="text-xs text-slate-500">
+                  Synthetic ID fraud surged <strong>26%</strong> in 2025. Physical verification stops AI-generated profiles cold.
+                </p>
+              </div>
+            </div>
 
-             {/* Confidence Paradox Card */}
-             <div className="flex items-center p-4 bg-amber-50 rounded-lg shadow-sm border border-amber-100 transition-all hover:shadow-md">
-                <Users className="w-8 h-8 text-amber-600 mr-4 flex-shrink-0" />
-                <div>
-                   <p className="font-semibold text-slate-900">The Confidence Paradox</p>
-                   <p className="text-xs text-slate-500">
-                      89% of Canadians believe they can spot a scam, yet <strong>30%</strong> fall victim. Don't rely on luck—rely on VFER.
-                   </p>
-                </div>
-             </div>
+            {/* Confidence Paradox Card */}
+            <div className="flex items-center p-4 bg-amber-50 rounded-lg shadow-sm border border-amber-100 transition-all hover:shadow-md">
+              <Users className="w-8 h-8 text-amber-600 mr-4 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-900">The Confidence Paradox</p>
+                <p className="text-xs text-slate-500">
+                  89% of Canadians believe they can spot a scam, yet <strong>30%</strong> fall victim. Don't rely on luck—rely on VFER.
+                </p>
+              </div>
+            </div>
 
-             {/* Stats Card */}
-             <div className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-slate-100 transition-all hover:shadow-md">
-                <TrendingUp className="w-8 h-8 text-red-500 mr-4 flex-shrink-0" />
-                <div>
-                   <p className="font-semibold text-slate-900">Rising Threat Levels</p>
-                   <p className="text-xs text-slate-500">
-                      Consumer reported losses topped <strong>$638M</strong> in 2024, but actual losses are estimated 20x higher.
-                   </p>
-                </div>
-             </div>
+            {/* Stats Card */}
+            <div className="flex items-center p-4 bg-white rounded-lg shadow-sm border border-slate-100 transition-all hover:shadow-md">
+              <TrendingUp className="w-8 h-8 text-red-500 mr-4 flex-shrink-0" />
+              <div>
+                <p className="font-semibold text-slate-900">Rising Threat Levels</p>
+                <p className="text-xs text-slate-500">
+                  Consumer reported losses topped <strong>$638M</strong> in 2024, but actual losses are estimated 20x higher.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

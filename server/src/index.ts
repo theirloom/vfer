@@ -8,7 +8,7 @@ import { GoogleGenAI } from '@google/genai';
 
 dotenv.config();
 
-const app = express();
+export const app = express();
 const port = process.env.PORT || 3001;
 
 // Initialize Gemini Client
@@ -69,37 +69,9 @@ app.post('/api/chat/explain', checkApiKey, async (req, res) => {
     }
 });
 
-// 3. RAG Endpoint (New Feature)
-app.post('/api/chat/rag', checkApiKey, async (req, res) => {
-    try {
-        const { message } = req.body;
-        if (!message) return res.status(400).json({ error: "Message is required" });
-
-        const context = await getRelevantContext(message);
-
-        const prompt = `
-    You are a helpful assistant for the Voluntary Financial Exclusion Registry (VFER). 
-    Use the following context to answer the user's question. if the answer is not in the context, say so politley.
-    
-    Context:
-    ${context}
-    
-    User Question: ${message}
-    `;
-
-        const model = ai!.models;
-        const response = await model.generateContent({
-            model: 'gemini-2.0-flash',
-            contents: prompt,
-        });
-
-        res.json({ text: response.text });
-    } catch (error) {
-        console.error("RAG Error:", error);
-        res.status(500).json({ error: "Failed to process RAG request." });
-    }
-});
-
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
-});
+// Only start the server if running directly (dev mode)
+if (require.main === module) {
+    app.listen(port, () => {
+        console.log(`Server running on http://localhost:${port}`);
+    });
+}

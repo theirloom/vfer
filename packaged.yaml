@@ -1,0 +1,176 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: VFER Production Stack
+Parameters:
+  DomainName:
+    Type: String
+    Default: bookscout.help
+    Description: The domain name for the application.
+  GeminiApiKey:
+    Type: String
+    NoEcho: true
+    Description: API Key for Google Gemini.
+Resources:
+  VferServerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://vfer-deploy-artifacts-928374/43416aeb7ce210e9c3e113a21df92eff
+      Handler: dist/lambda.handler
+      Runtime: nodejs20.x
+      Architectures:
+      - x86_64
+      MemorySize: 512
+      Timeout: 30
+      Environment:
+        Variables:
+          GEMINI_API_KEY:
+            Ref: GeminiApiKey
+      Events:
+        Api:
+          Type: HttpApi
+          Properties:
+            ApiId:
+              Ref: VferServerApi
+  VferServerApi:
+    Type: AWS::Serverless::HttpApi
+    Properties:
+      CorsConfiguration:
+        AllowOrigins:
+        - Fn::Sub: https://${DomainName}
+        - http://localhost:3000
+        AllowMethods:
+        - GET
+        - POST
+        - OPTIONS
+        AllowHeaders:
+        - Content-Type
+        - Authorization
+  VferFrontendBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName:
+        Fn::Sub: vfer-app-hosting-${AWS::AccountId}
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+  VferFrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: VferFrontendBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service: cloudfront.amazonaws.com
+          Action: s3:GetObject
+          Resource:
+            Fn::Sub: ${VferFrontendBucket.Arn}/*
+          Condition:
+            StringEquals:
+              AWS:SourceArn:
+                Fn::Sub: arn:aws:cloudfront::${AWS::AccountId}:distribution/${VferCloudFrontDistribution}
+  VferCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName:
+        Ref: DomainName
+      ValidationMethod: DNS
+      SubjectAlternativeNames:
+      - Fn::Sub: '*.${DomainName}'
+  VferOAC:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name:
+          Fn::Sub: vfer-oac-${AWS::AccountId}
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+  VferCloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        DefaultRootObject: index.html
+        Aliases:
+        - Ref: DomainName
+        ViewerCertificate:
+          AcmCertificateArn:
+            Ref: VferCertificate
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2021
+        Origins:
+        - Id: FrontendOrigin
+          DomainName:
+            Fn::GetAtt:
+            - VferFrontendBucket
+            - RegionalDomainName
+          OriginAccessControlId:
+            Fn::GetAtt:
+            - VferOAC
+            - Id
+          S3OriginConfig:
+            OriginAccessIdentity: ''
+        - Id: BackendOrigin
+          DomainName:
+            Fn::Sub: ${VferServerApi}.execute-api.${AWS::Region}.amazonaws.com
+          CustomOriginConfig:
+            HTTPPort: 80
+            HTTPSPort: 443
+            OriginProtocolPolicy: https-only
+        DefaultCacheBehavior:
+          TargetOriginId: FrontendOrigin
+          ViewerProtocolPolicy: redirect-to-https
+          AllowedMethods:
+          - GET
+          - HEAD
+          - OPTIONS
+          CachedMethods:
+          - GET
+          - HEAD
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+        CacheBehaviors:
+        - PathPattern: /api/*
+          TargetOriginId: BackendOrigin
+          ViewerProtocolPolicy: https-only
+          AllowedMethods:
+          - GET
+          - HEAD
+          - OPTIONS
+          - PUT
+          - POST
+          - PATCH
+          - DELETE
+          CachedMethods:
+          - GET
+          - HEAD
+          - OPTIONS
+          ForwardedValues:
+            QueryString: true
+            Headers:
+            - Authorization
+            - Content-Type
+            Cookies:
+              Forward: none
+Outputs:
+  ApiUrl:
+    Description: API Gateway endpoint URL
+    Value:
+      Fn::Sub: https://${VferServerApi}.execute-api.${AWS::Region}.amazonaws.com
+  CloudFrontUrl:
+    Description: CloudFront Distribution Domain Name
+    Value:
+      Fn::GetAtt:
+      - VferCloudFrontDistribution
+      - DomainName
+  DomainUrl:
+    Description: Application Domain URL
+    Value:
+      Fn::Sub: https://${DomainName}
