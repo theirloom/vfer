@@ -14,7 +14,7 @@ Resources:
   VferServerFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://vfer-deploy-artifacts-928374/43416aeb7ce210e9c3e113a21df92eff
+      CodeUri: s3://vfer-deploy-artifacts-928374/0345a2be7064e5ebccb0b701c4c1f192
       Handler: dist/lambda.handler
       Runtime: nodejs20.x
       Architectures:

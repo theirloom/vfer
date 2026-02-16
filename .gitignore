@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+*.zip
+packaged.yaml
+.aws-sam/
+coverage/
+.gemini/
+export_code.py
+*.log
