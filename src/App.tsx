@@ -35,36 +35,41 @@ function App() {
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
       <Navigation currentView={currentView} setView={setView} />
-      
+
       <main className="pb-12">
         {renderContent()}
       </main>
 
-      <footer className="bg-slate-900 text-slate-400 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-                <h3 className="text-white text-lg font-bold mb-4">VFER Canada</h3>
-                <p className="text-sm">
-                    Protecting Canadians from financial fraud through voluntary exclusion protocols and mandatory in-person verification.
-                </p>
+      <footer className="bg-slate-950 text-slate-400 py-24 border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="col-span-2">
+              <img src="/assets/bookscout_logo.png" alt="BookScout Logo" className="h-16 w-auto mb-8 opacity-90" />
+              <p className="text-lg font-medium leading-relaxed max-w-sm">
+                The national protocol for physical identity verification and sovereign wealth protection.
+              </p>
             </div>
             <div>
-                <h3 className="text-white text-lg font-bold mb-4">Legislative Alignment</h3>
-                <ul className="text-sm space-y-2">
-                    <li>Consumer-Driven Banking Act (Bill C-69)</li>
-                    <li>PCMLTFA (Sections 6 & 7)</li>
-                    <li>Criminal Code (Identity Theft s. 402.2)</li>
-                    <li>Pan-Canadian Trust Framework (PCTF)</li>
-                </ul>
+              <h3 className="text-white text-sm font-black uppercase tracking-widest mb-6">Legislative Alignment</h3>
+              <ul className="text-sm space-y-4 font-bold">
+                <li className="hover:text-emerald-400 transition-colors cursor-pointer">Bill C-69 (Open Banking)</li>
+                <li className="hover:text-emerald-400 transition-colors cursor-pointer">PCMLTFA Compliance</li>
+                <li className="hover:text-emerald-400 transition-colors cursor-pointer">Criminal Code s. 402.2</li>
+                <li className="hover:text-emerald-400 transition-colors cursor-pointer">PCTF Framework</li>
+              </ul>
             </div>
             <div>
-                 <h3 className="text-white text-lg font-bold mb-4">Support</h3>
-                 <p className="text-sm mb-2">1-800-SAFE-CAN</p>
-                 <p className="text-sm">support@vfer.ca</p>
+              <h3 className="text-white text-sm font-black uppercase tracking-widest mb-6">Support</h3>
+              <div className="space-y-4">
+                <p className="text-2xl font-black text-white">1-800-SAFE-CAN</p>
+                <p className="text-emerald-400 font-bold">support@bookscout.help</p>
+              </div>
             </div>
-        </div>
-        <div className="mt-8 text-center text-xs border-t border-slate-800 pt-8">
-            &copy; 2026 Voluntary Financial Exclusion Registry Proposal. Mock-up.
+          </div>
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
+            <p>&copy; 2026 BookScout Infrastructure. All Rights Reserved.</p>
+            <p>Sovereign Capital Strategy NI 45-110</p>
+          </div>
         </div>
       </footer>
     </div>

@@ -19,33 +19,31 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
   ];
 
   return (
-    <nav className="bg-slate-900 text-white sticky top-0 z-50 shadow-lg">
+    <nav className="bg-slate-950/80 backdrop-blur-xl border-b border-white/5 text-white sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center cursor-pointer" onClick={() => setView(ViewState.HOME)}>
-            <div className="flex-shrink-0">
-              <Shield className="h-8 w-8 text-blue-400" />
+        <div className="flex items-center justify-between h-20">
+          <div className="flex items-center cursor-pointer group" onClick={() => setView(ViewState.HOME)}>
+            <div className="flex-shrink-0 transition-transform group-hover:scale-105">
+              <img src="/assets/bookscout_logo.png" alt="BookScout Logo" className="h-12 w-auto" />
             </div>
             <div className="hidden md:block">
-              <div className="ml-4 flex items-baseline">
-                <span className="font-bold text-xl tracking-tight">VFER</span>
-                <span className="ml-2 text-slate-400 text-sm">Canada</span>
+              <div className="ml-4 flex flex-col justify-center">
+                <span className="font-bold text-lg tracking-tight uppercase bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">BookScout</span>
+                <span className="text-emerald-500 text-[10px] font-bold uppercase tracking-[0.2em]">Security Protocol</span>
               </div>
             </div>
           </div>
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-center space-x-1">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => setView(item.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium flex items-center transition-colors ${
-                    currentView === item.id
-                      ? 'bg-slate-800 text-blue-400'
-                      : 'text-slate-300 hover:bg-slate-700 hover:text-white'
-                  }`}
+                  className={`px-4 py-2 rounded-lg text-sm font-semibold flex items-center transition-all duration-300 ${currentView === item.id
+                    ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 shadow-[0_0_15px_rgba(16,185,129,0.1)]'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'
+                    }`}
                 >
-                  {item.icon}
                   {item.label}
                 </button>
               ))}
@@ -54,7 +52,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
           <div className="-mr-2 flex md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="bg-slate-800 inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none"
+              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -62,10 +60,9 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
         </div>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="md:hidden bg-slate-900 border-b border-white/5 animate-in slide-in-from-top duration-300">
+          <div className="px-4 pt-2 pb-6 space-y-1">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -73,13 +70,11 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
                   setView(item.id);
                   setIsOpen(false);
                 }}
-                className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center ${
-                  currentView === item.id
-                    ? 'bg-slate-800 text-blue-400'
-                    : 'text-slate-300 hover:bg-slate-700 hover:text-white'
-                }`}
+                className={`w-full text-left px-4 py-3 rounded-xl text-base font-bold flex items-center transition-all ${currentView === item.id
+                  ? 'bg-emerald-500/10 text-emerald-400'
+                  : 'text-slate-400 hover:bg-white/5 hover:text-white'
+                  }`}
               >
-                {item.icon}
                 {item.label}
               </button>
             ))}
