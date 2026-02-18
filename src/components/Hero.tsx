@@ -39,17 +39,17 @@ export const Hero: React.FC<HeroProps> = ({ onRegister }) => {
             <div className="text-center lg:text-left space-y-8">
               <div className="inline-flex items-center px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/5 text-emerald-400 text-sm font-bold uppercase tracking-widest backdrop-blur-md animate-pulse">
                 <ShieldCheck className="w-5 h-5 mr-2" />
-                Registry Core Status: Synchronized
+                SECURITY PROTOCOL: ACTIVE
               </div>
 
-              <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white leading-[0.9]">
-                National <br />
-                <span className="text-emerald-500">Identity</span> <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">Handshake.</span>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tight text-white leading-[0.9]">
+                Defend Your <br />
+                <span className="text-emerald-500">Identity.</span> <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-emerald-400">Lock the Vault.</span>
               </h1>
 
               <p className="text-xl text-slate-400 leading-relaxed font-medium max-w-xl">
-                The BookScout protocol moves financial truth from the digital ghost-layer back to the physical branch terminal.
+                BookScout provides a sovereign physical circuit-breaker to protect your life savings from AI-generated fraud and synthetic identity attacks.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -57,45 +57,63 @@ export const Hero: React.FC<HeroProps> = ({ onRegister }) => {
                   onClick={onRegister}
                   className="group relative px-10 py-5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black rounded-2xl transition-all shadow-[0_0_30px_rgba(16,185,129,0.3)] hover:shadow-[0_0_50px_rgba(16,185,129,0.5)] active:scale-95 text-xl flex items-center justify-center overflow-hidden"
                 >
-                  <span className="relative z-10">Register Protocol</span>
+                  <span className="relative z-10">Secure Your ID</span>
                   <ChevronRight className="ml-2 w-6 h-6 group-hover:translate-x-1 transition-transform relative z-10" />
+                </button>
+                <button
+                  className="px-10 py-5 bg-slate-900 hover:bg-slate-800 text-white font-black rounded-2xl transition-all border border-white/10 text-xl"
+                >
+                  View 2026 Data
                 </button>
               </div>
             </div>
 
-            <div className="mt-16 lg:mt-0 relative group">
-              <div className="absolute -inset-10 bg-gradient-to-tr from-emerald-500/20 via-cyan-400/20 to-blue-500/20 rounded-full blur-3xl opacity-30"></div>
-
-              {/* Central Infrastructure Asset */}
-              <div className="relative rounded-[40px] overflow-hidden border border-white/10 shadow-2xl bg-slate-900 group/hero">
-                <img
-                  src="/assets/fraud_infrastructure.jpg"
-                  alt="Registry Infrastructure"
-                  className="w-full h-auto opacity-90 transition-transform duration-[2000ms] group-hover/hero:scale-110"
-                />
-
-                {/* HUD Overlays */}
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-slate-950 via-slate-900/60 to-transparent">
-                  <div className="flex items-center space-x-6">
-                    <div className="h-12 w-12 rounded-full border-2 border-emerald-500 flex items-center justify-center animate-spin-slow">
-                      <Zap className="w-6 h-6 text-emerald-500" />
-                    </div>
-                    <div className="space-y-1">
-                      <p className="text-white font-black text-sm uppercase tracking-widest">Protocol Sync</p>
-                      <p className="text-emerald-500/80 font-mono text-[10px]">VERIFIED_NODES: 4,892 // LATENCY: 12ms</p>
+            <div className="mt-24 lg:mt-0 relative h-[500px] flex items-center justify-center lg:justify-end">
+              <div className="relative w-full max-w-[600px] h-full">
+                {/* Layer 2: Middle (The Core Action) */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] z-20 transition-transform duration-700 hover:scale-105">
+                  <div className="rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-slate-900 ring-1 ring-white/10">
+                    <img src="/assets/in_person_verification.png" alt="ID Verification" className="w-full h-64 object-cover" />
+                    <div className="p-4 bg-slate-950/90 backdrop-blur-md">
+                      <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">TERMINAL V4.0</p>
+                      <div className="flex items-center justify-between">
+                        <p className="text-white font-bold text-xs">PHYSICAL HANDSHAKE REQUIRED</p>
+                        <div className="h-2 w-2 bg-emerald-500 rounded-full animate-pulse"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Floating Shield Dashboard */}
-                <div className="absolute -top-12 -right-12 w-64 hidden xl:block transition-all duration-700 group-hover/hero:-translate-y-4">
-                  <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-slate-900/90 backdrop-blur-xl p-3">
-                    <img src="/assets/shield_dashboard.png" className="w-full h-auto rounded-lg opacity-80" />
-                    <div className="mt-2 h-1 w-full bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full bg-emerald-500 w-[85%] animate-pulse"></div>
+                {/* Layer 1: Top Left (System Status) */}
+                <div className="absolute top-0 left-0 w-64 z-30 transition-all duration-700 hover:-translate-y-2">
+                  <div className="rounded-2xl overflow-hidden border border-emerald-500/30 shadow-2xl bg-slate-900/90 backdrop-blur-xl p-5 ring-1 ring-emerald-500/20">
+                    <img src="/assets/shield_dashboard.png" className="w-full h-auto rounded-lg opacity-90 mb-4" />
+                    <div className="space-y-2">
+                      <p className="text-emerald-400 font-black text-[10px] uppercase tracking-widest">SYSTEM OK</p>
+                      <p className="text-slate-400 text-[10px] font-medium leading-tight">Biometric bridge integrity verified via PCTF protocol.</p>
+                      <div className="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                        <div className="h-full bg-emerald-500 w-[85%] animate-pulse"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                {/* Layer 3: Bottom Right (Threat Alert) */}
+                <div className="absolute bottom-0 right-0 w-72 z-10 transition-all duration-700 hover:translate-x-2">
+                  <div className="rounded-2xl overflow-hidden border border-red-500/30 shadow-2xl bg-slate-950/90 backdrop-blur-xl ring-1 ring-red-500/20">
+                    <div className="relative">
+                      <img src="/assets/fragmented_person.jpg" className="w-full h-auto opacity-60 grayscale" />
+                      <div className="absolute inset-0 bg-red-500/10"></div>
+                    </div>
+                    <div className="p-4 space-y-2">
+                      <p className="text-white font-black text-[10px] uppercase tracking-widest">THREAT VECTOR</p>
+                      <p className="text-red-500 text-[10px] font-black uppercase tracking-widest animate-pulse">SYNTHETIC CLUSTERING DETECTED</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Background Glow */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[120px] -z-10 animate-pulse"></div>
               </div>
             </div>
           </div>
@@ -149,7 +167,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegister }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Section 3: The Threat Analysis */}
       <section className="py-32 relative bg-slate-950 overflow-hidden">
@@ -190,7 +208,7 @@ export const Hero: React.FC<HeroProps> = ({ onRegister }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Feature Cards / Safety Advice */}
       <div className="w-full bg-slate-950 border-t border-white/5 py-32">
