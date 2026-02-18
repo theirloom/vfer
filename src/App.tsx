@@ -67,7 +67,17 @@ function App() {
             </div>
           </div>
           <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
-            <p>&copy; 2026 BookScout Infrastructure. All Rights Reserved.</p>
+            <div className="flex items-center space-x-6 mb-4 md:mb-0">
+              <p>&copy; 2026 BookScout Infrastructure. All Rights Reserved.</p>
+              <a
+                href="https://github.com/theirloom/vfer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-emerald-500 transition-colors"
+              >
+                GitHub Source
+              </a>
+            </div>
             <p>Sovereign Capital Strategy NI 45-110</p>
           </div>
         </div>

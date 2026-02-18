@@ -47,6 +47,15 @@ export const Navigation: React.FC<NavigationProps> = ({ currentView, setView }) 
                   {item.label}
                 </button>
               ))}
+              <a
+                href="https://github.com/theirloom/vfer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-4 p-2 text-slate-400 hover:text-white transition-colors"
+                aria-label="GitHub Repository"
+              >
+                <Code className="w-5 h-5" />
+              </a>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">

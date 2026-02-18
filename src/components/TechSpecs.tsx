@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Server, Database, Globe, Lock, Cpu, DollarSign, Key, FileBadge, Shield, Wallet, ChevronRight } from 'lucide-react';
+import { Server, Database, Globe, Lock, Cpu, DollarSign, Key, FileBadge, Shield, Wallet, ChevronRight, Code } from 'lucide-react';
 import { PolicyModal } from './PolicyModal';
 
 /**
@@ -224,6 +224,33 @@ export const TechSpecs: React.FC = () => {
                             <li className="flex items-center"><span className="w-2 h-2 bg-emerald-400 rounded-full mr-2"></span>FrontFundr Campaign</li>
                             <li className="flex items-center"><span className="w-2 h-2 bg-emerald-400 rounded-full mr-2"></span>User-Owner Model</li>
                         </ul>
+                    </div>
+                </div>
+
+                {/* Open Source Transparency */}
+                <div
+                    className="bg-slate-50 rounded-lg shadow-lg overflow-hidden border-2 border-dashed border-slate-200 hover:border-emerald-500/50 transition-colors duration-300"
+                >
+                    <div className="p-6">
+                        <div className="flex items-center mb-4">
+                            <div className="p-2 bg-slate-200 rounded-lg">
+                                <Code className="h-6 w-6 text-slate-700" />
+                            </div>
+                            <h3 className="ml-3 text-lg font-medium text-slate-900">Open Source Protocol</h3>
+                        </div>
+                        <p className="text-slate-600 text-sm mb-6">
+                            BookScout is a public-interest protocol. Our core registry logic is open for audit to ensure trust and transparency.
+                        </p>
+                        <a
+                            href="https://github.com/theirloom/vfer"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center w-full px-4 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl font-bold transition-all text-sm group"
+                        >
+                            <Code className="w-4 h-4 mr-2" />
+                            View Source on GitHub
+                            <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </a>
                     </div>
                 </div>
 
