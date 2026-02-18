@@ -66,4 +66,4 @@ This is an open-source initiative to raise awareness. We welcome contributions f
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-*Created by [Your Name/Organization] to advocate for a safer financial future for all Canadians.*
+*Created to advocate for a safer financial future for all Canadians.*
